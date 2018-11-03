@@ -2,7 +2,7 @@
 
 # Clone fireintranet
 cd /srv
-git clone ${GIT_URI:-https://github.com/samuscherer/fireintranet fireintranet} || true
+git clone ${GIT_URI:-https://github.com/samuscherer/fireintranet} fireintranet || true
 
 # Pull fireintranet
 cd /srv/fireintranet
