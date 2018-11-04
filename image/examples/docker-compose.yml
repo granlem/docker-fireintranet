@@ -1,0 +1,48 @@
+# Dockercompose to setup the fireintranet, mysql, phpmyadmin
+# You may have to setup database content manually, while no auto setup is implemented.
+# Access to Intranet: http://$HOSTNAME:4000
+# Access to phpmyadmin: http://$HOSTNAME:8080
+#
+# Author: Maxime Veit
+
+version: '3.3'
+
+volumes:
+  mysql_data:
+    driver: local
+
+services:
+  fireintranet:
+    image: granlem/fireintranet
+    restart: always
+    ports:
+      - 4000:4000
+    environment:
+      GIT_URI: "https://USERNAME:PASSWORD@github.com/granlem/fireintranet"
+      DB_HOST: db
+      DB_DB: db
+      DB_USER: user
+      DB_PASSWORD: password # TODO: Change me!
+      THREADS: 1
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    restart: always
+    ports:
+      - "8080:80"
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword # TODO: Change me!
+      PMA_HOST: db
+
+  db:
+    image: mysql:5.7
+    restart: always
+    hostname: db
+    volumes:
+      - mysql_data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword # TODO: Change me!
+      MYSQL_DATABASE: db
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+ 
