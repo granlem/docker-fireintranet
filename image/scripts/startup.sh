@@ -20,7 +20,16 @@ fi
 
 # Initiate database
 if [ -z $KEEP_DB_UNTOUCHED ]; then
-  mysql -u "${DB_USER:-root}" -p"${DB_PASSWORD:-password}" -h "${DB_HOST:-db}" "${DB_DB:-db}" < /srv/base_db.sql
+  for i in `seq 1 15`; do
+    sleep 1
+    echo "Trying($i/15) to connect to mysql database an initiate"
+    mysql -h "${DB_HOST:-db}" -u "${DB_USER:-root}" -p"${DB_PASSWORD:-password}" -e "" || continue
+    db_initialized = $(mysql -h "${DB_HOST:-db}" -u "${DB_USER:-root}" -p"${DB_PASSWORD:-password}" "${DB_DB:-db}" -s -N -e "SELECT 1 FROM members LIMIT 1;")
+    if [ -z $KEEP_DB_UNTOUCHED ] && [ -z $db_initialized ]; then
+      mysql -u "${DB_USER:-root}" -p"${DB_PASSWORD:-password}" -h "${DB_HOST:-db}" "${DB_DB:-db}" < /srv/base_db.sql
+    fi
+    break
+  done
 fi
 
 # Start fireintranet
