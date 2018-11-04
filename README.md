@@ -14,6 +14,5 @@ Docker image for the samuels/fireintranet from github.com
 ```
 wget https://raw.githubusercontent.com/granlem/docker-fireintranet/master/image/examples/docker-compose.yml -O docker-compose.yml
 docker-compose up
-...
 ```
 After you set up the database aswell you can access the intranet via http://HOSTNAME:4000 .
