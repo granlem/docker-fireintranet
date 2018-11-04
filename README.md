@@ -16,6 +16,7 @@ wget https://raw.githubusercontent.com/granlem/docker-fireintranet/master/image/
 docker-compose up
 ```
 Afterwards you should be able to access the intranet via http://$HOSTNAME:4000 and the phpmyadmin via http://$HOSTNAME:8080 .<br />
+### Defaults
 **Default username:** john.doe<br />
 **Default password:** password<br />
 **Default mysql user:** root<br />
