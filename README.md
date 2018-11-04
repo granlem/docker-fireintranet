@@ -15,8 +15,8 @@ Docker image for the samuels/fireintranet from github.com
 wget https://raw.githubusercontent.com/granlem/docker-fireintranet/master/image/docker-compose.yml -O docker-compose.yml
 docker-compose up
 ```
-Afterwards you should be able to access the intranet via http://$HOSTNAME:4000 and the phpmyadmin via http://$HOSTNAME:8080 .
-**Default username:** john.doe
-**Default password:** password
-**Default mysql user:** root
+Afterwards you should be able to access the intranet via http://$HOSTNAME:4000 and the phpmyadmin via http://$HOSTNAME:8080 .<br />
+**Default username:** john.doe<br />
+**Default password:** password<br />
+**Default mysql user:** root<br />
 **Default mysql password:** rootpassword
