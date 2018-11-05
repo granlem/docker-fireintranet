@@ -1,6 +1,6 @@
 # docker-fireintranet
 ## Description
-Docker image for the samuels/fireintranet from github.com
+Docker image for the samuscherer/fireintranet from github.com
 
 ### Environments
 **DB_USER** - Database Username (Default: db) <br />
